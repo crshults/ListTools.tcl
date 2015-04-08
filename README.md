@@ -1,4 +1,5 @@
 # ListTools.tcl
+## lremove
 **Problem:**
 Something I was doing (maybe lmap) was returning a list with a bunch of 'blanks' in it, like this:
 ```
@@ -15,6 +16,7 @@ lremove my_list {}
 puts $my_list; # -> a b c d e f g h
 ```
 
+## lrotate
 **Problem:**
 I was sniffing for a hardware device on a serial port, but was not sure which serial port it was on. I wanted to take the list of ports and just rotate it each time I wanted to inspect the next port: `lrotate`
 
@@ -29,6 +31,7 @@ lrotate port_list
 puts $port_list; # -> com3 com4 com8 com14 com1 com2
 ```
 
+## lpop
 **Problem:**
 Looking back on it, I'm not sure why I made this thing. I'll have to dig through my apps to see where I'm actually using it. Maybe I hadn't looked at one of the million queues available from tcllib. Anyway...: `lpop`
 
@@ -43,6 +46,7 @@ lpop command_list 2; # -> enable poll
 puts $command_list;  # -> start stop disable shutdown
 ```
 
+## lindices
 **Problem:**
 I wanted a lindex that I could pass in multiple indices to in order to selectively pull bits and pieces from a list: `lindices`
 
