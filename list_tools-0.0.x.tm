@@ -1,4 +1,4 @@
-package provide list_tools 0.0.1
+package provide list_tools 0.0.2
 
 proc lremove {the_list args} {
     upvar 1 $the_list local_list
@@ -17,4 +17,12 @@ proc lpop {the_list {number_to_pop 1}} {
     set pop_list [lrange $local_list 0 $number_to_pop-1]
     set local_list [lrange $local_list $number_to_pop end]
     return $pop_list
+}
+
+proc lindices {the_list the_indices} {
+    set result {}
+    foreach index $the_indices {
+        lappend result [lindex $the_list $index]
+    }
+    return $result
 }
