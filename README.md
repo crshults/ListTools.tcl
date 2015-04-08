@@ -1,4 +1,7 @@
 # ListTools.tcl
+
+Some common things I kept needing to do with lists that aren't built into the core.
+
 ## lremove
 **Problem:**
 Something I was doing (maybe lmap) was returning a list with a bunch of 'blanks' in it, like this:
