@@ -21,12 +21,12 @@ I was sniffing for a hardware device on a serial port, but was not sure which se
 **Example:**
 ```
 package require list_tools
-set port_list {com1 com2 com3 com4 com8 com 14}
-puts $port_list; # -> com1 com2 com3 com4 com8 com 14
+set port_list {com1 com2 com3 com4 com8 com14}
+puts $port_list; # -> com1 com2 com3 com4 com8 com14
 lrotate port_list
-puts $port_list; # -> com2 com3 com4 com8 com 14 com1
+puts $port_list; # -> com2 com3 com4 com8 com14 com1
 lrotate port_list
-puts $port_list; # -> com3 com4 com8 com 14 com1 com2
+puts $port_list; # -> com3 com4 com8 com14 com1 com2
 ```
 
 **Problem:**
