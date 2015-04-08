@@ -25,3 +25,10 @@ puts $command_list;  # -> start stop disable shutdown
 
 lindices -> see https://core.tcl.tk/tcl/tktview?name=a95309bf70
 ```
+
+## How to make it available for use:
+
+1. Take the Tcl module file and drop it into `<TclInstallRoot>\lib\tcl8\8.6\`
+2. Rename it to list_tools-0.0.3.tm
+3. `package require list_tools`
+4. 
