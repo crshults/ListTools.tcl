@@ -1,4 +1,4 @@
-package provide list_tools 0.0.4
+package provide list_tools 0.0.5
 
 proc lremove {the_list args} {
 	upvar 1 $the_list local_list
@@ -36,6 +36,21 @@ proc lindices {the_list args} {
 	return $the_list
 }
 
+proc lmax {the_list} {
+	return [lindex [lsort -integer $the_list] end]
+}
+
+proc lfind {the_list the_items} {
+	set result {}
+	foreach item $the_items {
+		set index [lsearch $the_list $item]
+		if {$index ne -1} {
+			lappend result $index
+		}
+	}
+	return $result
+}
+
 proc lshuffle {the_list} {
 	foreach number $the_list {
 		lappend keyed_list [list [expr {rand()}] $number]
@@ -50,4 +65,23 @@ proc range {start end} {
 		lappend output $i
 	}
 	return $output
+}
+
+proc lintersection {args} {
+	if {[llength $args] == 1} {
+		return [join $args]
+	}
+
+	if {[llength $args] == 2} {
+		set intersection {}
+		foreach item [lindex $args 0] {
+			set match [lsearch -exact -inline [lindex $args 1] $item]
+			if {$match ne ""} {
+				lappend intersection $match
+			}
+		}
+		return $intersection
+	}
+
+	lintersection [lintersection [lindex $args 0]] [lintersection {*}[lrange $args 1 end]]
 }
