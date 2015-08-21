@@ -1,4 +1,4 @@
-package provide list_tools 0.0.5
+package provide list_tools 0.0.6
 
 proc lremove {the_list args} {
 	upvar 1 $the_list local_list
@@ -84,4 +84,15 @@ proc lintersection {args} {
 	}
 
 	lintersection [lintersection [lindex $args 0]] [lintersection {*}[lrange $args 1 end]]
+}
+
+proc ltoggle {the_list the_item} {
+upvar 1 $the_list local_list
+	if {[lsearch $local_list $the_item] != -1} {
+		lremove local_list $the_item
+		return removed
+	} else {
+		lappend local_list $the_item
+		return added
+	}
 }
