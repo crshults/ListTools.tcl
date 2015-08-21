@@ -70,8 +70,38 @@ lindices {a b c} x; # bad index "x": must be integer?[+-]integer? or end?[+-]int
 lindices {a b c} {0 1 end 0 3 end-1};
 ```
 
+## lmax
+Return the largest item from a list of integers
+
+## lfind
+Find the indices of a bunch of items in a list
+
+**Example:**
+```
+lfind {a b c d e f g h i j k} {a h i}; # returns 0 7 8
+```
+
+## lshuffle
+Shuffle a list
+
+## range
+Generate a range
+
+**Example:**
+```
+range 1 10; # 1 2 3 4 5 6 7 8 9 10
+```
+
+## lintersection
+Find the intersection of a bunch of lists
+
+**Example:**
+```
+lintersection {1 2 3 4} {2 3 4 5} {3 4 5 6}; # 3 4
+```
+
 ## How to make it available for use:
 
 1. Take the Tcl module file and drop it into `<TclInstallRoot>\lib\tcl8\8.6\`
-2. Rename it to list_tools-0.0.3.tm
+2. Rename it to list_tools-0.0.5.tm
 3. `package require list_tools`
