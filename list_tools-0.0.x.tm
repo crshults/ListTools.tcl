@@ -1,10 +1,17 @@
-package provide list_tools 0.0.8
+package provide list_tools 0.0.9
 
-proc lremove {the_list args} {
+proc lremove_in_place {the_list args} {
 	upvar 1 $the_list local_list
 	foreach what_to_remove $args {
 		set local_list [lsearch -inline -all -not -exact $local_list $what_to_remove]
 	}
+}
+
+proc lremove {the_list args} {
+	foreach what_to_remove $args {
+		set the_list [lsearch -inline -all -not -exact $the_list $what_to_remove]
+	}
+	return $the_list
 }
 
 proc lrotate {the_list} {
