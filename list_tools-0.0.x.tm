@@ -1,4 +1,4 @@
-package provide list_tools 0.0.7
+package provide list_tools 0.0.8
 
 proc lremove {the_list args} {
 	upvar 1 $the_list local_list
@@ -102,4 +102,8 @@ proc lcontains {the_list the_item} {
 		-1      {return no}
 		default {return yes}
 	}
+}
+
+proc ltake {the_list number_to_take} {
+	lrange $the_list 0 $number_to_take-1
 }
