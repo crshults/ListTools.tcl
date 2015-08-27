@@ -1,8 +1,5 @@
 package provide list_tools 0.0.10
 
-proc ltest {the_list args} {
-if {[uplevel 1 [subst {info exists $the_list}]]} {puts inline} else {puts "new list"}}
-
 proc lremove {the_list args} {
 	catch {uplevel 1 [subst {info exists $the_list}]} result
 	switch $result {
