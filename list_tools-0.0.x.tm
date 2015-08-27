@@ -1,17 +1,25 @@
-package provide list_tools 0.0.9
+package provide list_tools 0.0.10
 
-proc lremove_in_place {the_list args} {
+proc ltest {the_list args} {
+if {[uplevel 1 [subst {info exists $the_list}]]} {puts inline} else {puts "new list"}}
+
+proc lremove {the_list args} {
+	catch {uplevel 1 [subst {info exists $the_list}]} result
+	switch $result {
+		1       {
 	upvar 1 $the_list local_list
 	foreach what_to_remove $args {
 		set local_list [lsearch -inline -all -not -exact $local_list $what_to_remove]
 	}
 }
 
-proc lremove {the_list args} {
+		default {
 	foreach what_to_remove $args {
 		set the_list [lsearch -inline -all -not -exact $the_list $what_to_remove]
 	}
 	return $the_list
+}
+	}
 }
 
 proc lrotate {the_list} {
