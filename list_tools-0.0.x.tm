@@ -1,4 +1,4 @@
-package provide list_tools 0.0.10
+package provide list_tools 0.0.11
 
 proc lremove {the_list args} {
 	catch {uplevel 1 [subst {info exists $the_list}]} result
@@ -118,4 +118,18 @@ proc lcontains {the_list the_item} {
 
 proc ltake {the_list number_to_take} {
 	lrange $the_list 0 $number_to_take-1
+}
+
+proc ldedup {the_list} {
+	upvar 1 $the_list local_list
+	
+	foreach item [lsort -unique $local_list] {
+		lappend indices [lsearch $local_list $item]
+	}
+
+	foreach index [lsort -integer $indices] {
+		lappend result [lindex $local_list $index]
+	}
+
+	set the_list $result
 }
